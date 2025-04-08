@@ -9,32 +9,54 @@ A Python-based facial recognition attendance system that uses computer vision to
    ```bash
    pip install -r requirements.txt
    ```
-3. Create a `.env` file with your configuration (see .env.example)
+3. Configure the `.env` file with your settings:
+
+   ```
+   # Camera settings (0=external camera, 1=built-in camera)
+   CAMERA_INDEX=1
+
+   # Face recognition settings
+   CONFIDENCE_THRESHOLD=70
+
+   # Attendance settings
+   ATTENDANCE_COOLDOWN=60
+   ```
 
 ## Usage
 
-1. To register new faces:
+Run the application:
 
-   ```bash
-   python register.py
-   ```
+```bash
+python app.py
+```
 
-2. To start the attendance system:
-   ```bash
-   python attendance.py
-   ```
+This will display a menu with options to:
+
+1. Register a new face
+2. Take attendance
+3. Exit
 
 ## Features
 
-- Face detection and recognition
-- Real-time attendance tracking
-- CSV export of attendance records
-- Simple and intuitive interface
+- Face detection and recognition using OpenCV
+- Real-time attendance tracking with confirmation
+- CSV export of attendance records by date
+- Easy face registration system
+- Smart camera selection with fallback options
+- Configurable settings via environment variables
 
 ## Project Structure
 
-- `attendance.py` - Main attendance system
-- `register.py` - Face registration utility
-- `utils.py` - Helper functions
-- `known_faces/` - Directory for storing known face encodings
-- `attendance_records/` - Directory for storing attendance records
+- `app.py` - Main application with all functionality
+- `.env` - Configuration file for settings
+- `known_faces/` - Directory for storing known face images
+- `attendance_records/` - Directory for storing attendance CSV files
+- `models/` - Directory for storing trained face recognition models
+
+## Customization
+
+You can customize the system by modifying the `.env` file:
+
+- Change `CAMERA_INDEX` to use a different camera
+- Adjust `CONFIDENCE_THRESHOLD` for stricter/looser face matching
+- Modify `ATTENDANCE_COOLDOWN` to control how frequently attendance is recorded
